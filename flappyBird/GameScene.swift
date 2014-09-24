@@ -47,7 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVectorMake(0, -9.8)
         
         //Create label for score
-        scoreLabel.fontName = "8BIT WONDER Nominal"
+        scoreLabel.fontName = "04b"
         scoreLabel.fontSize = 60
         scoreLabel.text = "0"
         scoreLabel.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 + 300)
@@ -99,7 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ground)
         
         //Create timer for pipes
-        var timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("makePipes"), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("makePipes"), userInfo: nil, repeats: true)
         
         
         
@@ -151,7 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             pipe1 = SKSpriteNode (texture: pipe1texture)
             pipe1.position = CGPointMake(self.frame.width / 2 + self.frame.width, self.frame.height / 2 + pipe1.size.height / 2 + gapHeight / 2 + pipeOffset)
             pipe1.zPosition = 1
-            pipe1.physicsBody = SKPhysicsBody (texture: pipe1texture, size: CGSize(width: pipe1.size.width, height: pipe1.size.height))
+            pipe1.physicsBody = SKPhysicsBody (rectangleOfSize: pipe1texture.size())
             pipe1.physicsBody?.dynamic = false
             pipe1.physicsBody?.categoryBitMask = objectGroup
 
@@ -163,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             pipe2 = SKSpriteNode (texture: pipe2texture)
             pipe2.position = CGPointMake(self.frame.width / 2 + self.frame.width, self.frame.height / 2 - pipe2.size.height / 2 - gapHeight / 2 + pipeOffset)
             pipe2.zPosition = 2
-            pipe2.physicsBody = SKPhysicsBody (texture: pipe1texture, size: CGSize(width: pipe1.size.width, height: pipe1.size.height))
+            pipe2.physicsBody = SKPhysicsBody (rectangleOfSize: pipe2texture.size())
             pipe2.physicsBody?.dynamic = false
             pipe2.physicsBody?.categoryBitMask = objectGroup
 
@@ -207,7 +207,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 var moveLabelTo = SKAction.moveToY(self.frame.height / 2 + 50, duration: 0.5)
                 var scaleLabel = SKAction.scaleTo(2, duration: 0.5)
-                var groupLabel = SKAction.group([moveLabelTo,scaleLabel])
+                var redLabel = SKAction.colorizeWithColor(SKColor .redColor(), colorBlendFactor: 1, duration: 0.5)
+
+                var groupLabel = SKAction.group([moveLabelTo,scaleLabel,redLabel])
                 gameOverLabel.runAction(groupLabel)
                 
                 gameOverLabel.zPosition = 20

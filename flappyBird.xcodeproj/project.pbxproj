@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D3097AFA19D31DE200A1CCC5 /* 8-BIT WONDER.TTF in Resources */ = {isa = PBXBuildFile; fileRef = D3097AF919D31DC500A1CCC5 /* 8-BIT WONDER.TTF */; };
 		D3287ADD19D2866D00777E7B /* gameOver.png in Resources */ = {isa = PBXBuildFile; fileRef = D3287ADC19D2866D00777E7B /* gameOver.png */; };
+		D3834CCB19D335B700FEDAF8 /* flipFlopStudiosLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D3834CCA19D335B700FEDAF8 /* flipFlopStudiosLogo.png */; };
+		D3834CD119D33C0700FEDAF8 /* 04B_30__.TTF in Resources */ = {isa = PBXBuildFile; fileRef = D3834CD019D33C0700FEDAF8 /* 04B_30__.TTF */; };
 		D3AA51EC19D12F2800957238 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AA51E719D12F2800957238 /* bg.png */; };
 		D3AA51ED19D12F2800957238 /* flappy1.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AA51E819D12F2800957238 /* flappy1.png */; };
 		D3AA51EE19D12F2800957238 /* flappy2.png in Resources */ = {isa = PBXBuildFile; fileRef = D3AA51E919D12F2800957238 /* flappy2.png */; };
@@ -35,8 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D3097AF919D31DC500A1CCC5 /* 8-BIT WONDER.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "8-BIT WONDER.TTF"; sourceTree = "<group>"; };
 		D3287ADC19D2866D00777E7B /* gameOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameOver.png; sourceTree = "<group>"; };
+		D3834CCA19D335B700FEDAF8 /* flipFlopStudiosLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flipFlopStudiosLogo.png; sourceTree = "<group>"; };
+		D3834CD019D33C0700FEDAF8 /* 04B_30__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = 04B_30__.TTF; sourceTree = "<group>"; };
+		D3834CD219D33C9E00FEDAF8 /* 04B_30__.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; name = 04B_30__.TTF; path = flappyBird/04B_30__.TTF; sourceTree = "<group>"; };
 		D3AA51E719D12F2800957238 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		D3AA51E819D12F2800957238 /* flappy1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flappy1.png; sourceTree = "<group>"; };
 		D3AA51E919D12F2800957238 /* flappy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flappy2.png; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 		D3B3927619D12A3C004A9CDB = {
 			isa = PBXGroup;
 			children = (
+				D3834CD219D33C9E00FEDAF8 /* 04B_30__.TTF */,
 				D3B3928119D12A3C004A9CDB /* flappyBird */,
 				D3B3929B19D12A3C004A9CDB /* flappyBirdTests */,
 				D3B3928019D12A3C004A9CDB /* Products */,
@@ -115,7 +119,8 @@
 				D3AA51E619D12F2800957238 /* img */,
 				D3B3928F19D12A3C004A9CDB /* Images.xcassets */,
 				D3287ADC19D2866D00777E7B /* gameOver.png */,
-				D3097AF919D31DC500A1CCC5 /* 8-BIT WONDER.TTF */,
+				D3834CD019D33C0700FEDAF8 /* 04B_30__.TTF */,
+				D3834CCA19D335B700FEDAF8 /* flipFlopStudiosLogo.png */,
 				D3B3929119D12A3C004A9CDB /* LaunchScreen.xib */,
 				D3B3928219D12A3C004A9CDB /* Supporting Files */,
 			);
@@ -227,10 +232,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3834CD119D33C0700FEDAF8 /* 04B_30__.TTF in Resources */,
 				D3AA51EE19D12F2800957238 /* flappy2.png in Resources */,
 				D3AA51EC19D12F2800957238 /* bg.png in Resources */,
+				D3834CCB19D335B700FEDAF8 /* flipFlopStudiosLogo.png in Resources */,
 				D3B3929319D12A3C004A9CDB /* LaunchScreen.xib in Resources */,
-				D3097AFA19D31DE200A1CCC5 /* 8-BIT WONDER.TTF in Resources */,
 				D3AA51EF19D12F2800957238 /* pipe1.png in Resources */,
 				D3B3929019D12A3C004A9CDB /* Images.xcassets in Resources */,
 				D3AA51F019D12F2800957238 /* pipe2.png in Resources */,
