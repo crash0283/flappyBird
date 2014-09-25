@@ -15,10 +15,7 @@ class Scores: GameScene {
         
         movingBackground()
         scoresTitle()
-        
-        
-        
-        
+
     }
     
     
@@ -45,6 +42,7 @@ class Scores: GameScene {
         
         
     }
+    
     
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {

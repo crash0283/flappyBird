@@ -37,15 +37,13 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
     var labelHolder = SKNode()
     var startGame = 1
     
-    var highScores = []
-    
     
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         
         movingObjects.speed = 0
-        
+    
         self.addChild(movingObjects)
         self.addChild(labelHolder)
         
