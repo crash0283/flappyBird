@@ -282,6 +282,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 
                 movingObjects.speed = 0
+                restartButton.alpha = 0
                 
             }
             
