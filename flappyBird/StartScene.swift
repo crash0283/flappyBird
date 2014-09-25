@@ -19,6 +19,7 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
     var pipe1 = SKSpriteNode()
     var pipe2 = SKSpriteNode()
     var restartButton = SKSpriteNode()
+    var backToMenuButton = SKSpriteNode()
     
     //Define collision masks
     let birdGroup: UInt32 = 1
@@ -234,6 +235,16 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
                 restartButton.zPosition = 20
                 restartButton.name = "restartButton"
                 
+                var backToMenuButtonTexture = SKTexture(imageNamed: "back.png")
+                backToMenuButton = SKSpriteNode (texture: backToMenuButtonTexture)
+                backToMenuButton.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 500)
+                backToMenuButton.size = CGSizeMake(75, 75)
+                var moveBack = SKAction.moveToY(self.frame.size.height / 2 - 250, duration: 0.5)
+                self.addChild(backToMenuButton)
+                backToMenuButton.runAction(moveBack)
+                backToMenuButton.zPosition = 100
+                backToMenuButton.name = "backToMenuButton"
+                
                 
             }
         }
@@ -286,6 +297,17 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
                 
                 movingObjects.speed = 0
                 restartButton.alpha = 0
+                backToMenuButton.alpha = 0
+
+                
+            } else if node.name == "backToMenuButton" {
+                
+                let transitionToMenu = SKTransition.fadeWithColor(SKColor.whiteColor(), duration: 1)
+                let scene = GameScene(size: self.size)
+                scene.scaleMode = SKSceneScaleMode.AspectFill
+                
+                self.scene?.view?.presentScene(scene, transition: transitionToMenu)
+                
                 
             }
             
