@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var background = SKSpriteNode()
     var pipe1 = SKSpriteNode()
     var pipe2 = SKSpriteNode()
+    var restartButton = SKSpriteNode()
     
     //Define collision masks
     let birdGroup: UInt32 = 1
@@ -200,7 +201,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
                 gameOver = 1
                 movingObjects.speed = 0
-            
+                
+                var pulseRed = SKAction.sequence([SKAction.colorizeWithColor(SKColor.redColor(), colorBlendFactor: 1.0, duration: 0.1), SKAction.colorizeWithColorBlendFactor(0.0, duration: 0.2)])
+                
+                bird.runAction(pulseRed)
+                
+                
                 var gameOverTexture = SKTexture (imageNamed: "gameOver.png")
                 gameOverLabel = SKSpriteNode (texture: gameOverTexture)
                 gameOverLabel.position = CGPointMake(self.frame.width / 2, self.frame.height + 10)
@@ -214,6 +220,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 gameOverLabel.zPosition = 20
                 labelHolder.addChild(gameOverLabel)
+                
+                var restartButtonTexture = SKTexture(imageNamed: "refresh.png")
+                restartButton = SKSpriteNode (texture: restartButtonTexture)
+                restartButton.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 500)
+                restartButton.size = CGSizeMake(75, 75)
+                var moveRestart = SKAction.moveToY(self.frame.size.height / 2 - 150, duration: 0.5)
+                self.addChild(restartButton)
+                restartButton.runAction(moveRestart)
+                restartButton.zPosition = 20
+                restartButton.name = "restartButton"
+
             
             }
         }
@@ -242,23 +259,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         } else {
             
-            score = 0
-            scoreLabel.text = "0"
-            startDirections.alpha = 1
-            scoreLabel.alpha = 0
-            movingObjects.removeAllChildren()
-            makeBackground()
-            bird.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
-            labelHolder.removeAllChildren()
-            bird.physicsBody?.velocity = CGVectorMake(0, 0)
-            startGame = 1
-            bird.physicsBody?.dynamic = false
-
-            gameOver = 0
+            var touch: AnyObject? = touches.anyObject()
+            var location = touch?.locationInNode(self)
+            var node = nodeAtPoint(location!)
             
-
-
-            movingObjects.speed = 0
+            if node.name == "restartButton" {
+                
+                score = 0
+                scoreLabel.text = "0"
+                startDirections.alpha = 1
+                scoreLabel.alpha = 0
+                movingObjects.removeAllChildren()
+                makeBackground()
+                bird.position = CGPoint(x: CGRectGetMidX(self.frame), y: CGRectGetMidY(self.frame))
+                labelHolder.removeAllChildren()
+                bird.physicsBody?.velocity = CGVectorMake(0, 0)
+                startGame = 1
+                bird.physicsBody?.dynamic = false
+                
+                gameOver = 0
+                
+                
+                
+                movingObjects.speed = 0
+                
+            }
+            
+            
 
         }
         
