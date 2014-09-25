@@ -36,6 +36,8 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
     
     var labelHolder = SKNode()
     var startGame = 1
+    var highScoreLabel = SKLabelNode()
+    var highScore = Int()
     
     
     
@@ -105,7 +107,6 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
         
         //Create timer for pipes
         NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("makePipes"), userInfo: nil, repeats: true)
-        
         
         
     }
@@ -213,9 +214,9 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
                 
                 var gameOverTexture = SKTexture (imageNamed: "gameOver.png")
                 gameOverLabel = SKSpriteNode (texture: gameOverTexture)
-                gameOverLabel.position = CGPointMake(self.frame.width / 2, self.frame.height + 10)
+                gameOverLabel.position = CGPointMake(self.frame.width / 2, self.frame.height + 100)
                 
-                var moveLabelTo = SKAction.moveToY(self.frame.height / 2 + 50, duration: 0.5)
+                var moveLabelTo = SKAction.moveToY(self.frame.height / 2 + 120, duration: 0.5)
                 var scaleLabel = SKAction.scaleTo(2, duration: 0.5)
                 var redLabel = SKAction.colorizeWithColor(SKColor .redColor(), colorBlendFactor: 1, duration: 0.5)
                 
@@ -230,7 +231,7 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
                 restartButton.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 500)
                 restartButton.size = CGSizeMake(75, 75)
                 var moveRestart = SKAction.moveToY(self.frame.size.height / 2 - 150, duration: 0.5)
-                self.addChild(restartButton)
+                labelHolder.addChild(restartButton)
                 restartButton.runAction(moveRestart)
                 restartButton.zPosition = 20
                 restartButton.name = "restartButton"
@@ -240,10 +241,36 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
                 backToMenuButton.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 500)
                 backToMenuButton.size = CGSizeMake(75, 75)
                 var moveBack = SKAction.moveToY(self.frame.size.height / 2 - 250, duration: 0.5)
-                self.addChild(backToMenuButton)
+                labelHolder.addChild(backToMenuButton)
                 backToMenuButton.runAction(moveBack)
                 backToMenuButton.zPosition = 100
                 backToMenuButton.name = "backToMenuButton"
+                
+                NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+                
+                if score > NSUserDefaults.standardUserDefaults().integerForKey("highscore") {
+                    
+                    NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                    
+                }
+                
+                highScore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+                
+                
+                //Create label for score
+                highScoreLabel.fontName = "04b"
+                highScoreLabel.fontSize = 32
+                highScoreLabel.fontColor = SKColor.blackColor()
+                highScoreLabel.text = "High Score: \(highScore)"
+                highScoreLabel.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 50)
+                highScoreLabel.zPosition = 20
+                highScoreLabel.alpha = 1
+                labelHolder.addChild(highScoreLabel)
+
+                
+                
+                
                 
                 
             }
@@ -298,6 +325,7 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
                 movingObjects.speed = 0
                 restartButton.alpha = 0
                 backToMenuButton.alpha = 0
+                highScoreLabel.alpha = 0
 
                 
             } else if node.name == "backToMenuButton" {
