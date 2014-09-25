@@ -37,6 +37,8 @@ class StartScene: SKScene, SKPhysicsContactDelegate {
     var labelHolder = SKNode()
     var startGame = 1
     
+    var highScores = []
+    
     
     
     override func didMoveToView(view: SKView) {

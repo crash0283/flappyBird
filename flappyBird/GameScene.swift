@@ -11,6 +11,7 @@ import SpriteKit
 class GameScene: StartScene {
     
     var startButton = SKSpriteNode()
+    var scoresButton = SKSpriteNode()
     
         override func didMoveToView(view: SKView) {
         
@@ -24,6 +25,14 @@ class GameScene: StartScene {
             startButton.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 30)
             startButton.size = CGSizeMake(self.startButton.size.width / 12, self.startButton.size.height / 12)
             self.addChild(startButton)
+            
+            scoresButton = SKSpriteNode (imageNamed: "score.png")
+            scoresButton.name = "scoresButton"
+            scoresButton.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2 - 150)
+            scoresButton.size = CGSizeMake(self.scoresButton.size.width / 6, self.scoresButton.size.height / 6)
+            self.addChild(scoresButton)
+            
+            
             
             
         
@@ -80,6 +89,15 @@ class GameScene: StartScene {
             
             let transition = SKTransition.fadeWithColor(SKColor.whiteColor(), duration: 1)
             let scene = StartScene(size: self.size)
+            scene.scaleMode = SKSceneScaleMode.AspectFill
+            
+            self.scene?.view?.presentScene(scene, transition: transition)
+            
+            
+        } else if node.name == "scoresButton" {
+            
+            let transition = SKTransition.fadeWithColor(SKColor.whiteColor(), duration: 1)
+            let scene = Scores(size: self.size)
             scene.scaleMode = SKSceneScaleMode.AspectFill
             
             self.scene?.view?.presentScene(scene, transition: transition)
